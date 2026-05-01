@@ -4,6 +4,14 @@ O **NexusCinema** é um aplicativo mobile desenvolvido com React Native e Expo q
 
 ---
 
+## Acesso Online (Web)
+
+O NexusCinema é totalmente multiplataforma e pode ser utilizado perfeitamente tanto no **celular** quanto no **PC** através do navegador, sem precisar instalar nada!
+
+🔗 **Acesso em Produção:** [https://nexus-cinema.vercel.app/login](https://nexus-cinema.vercel.app/login)
+
+---
+
 ## Funcionalidades
 
 - Listagem de filmes e séries populares, novidades e os mais bem avaliados.
