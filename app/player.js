@@ -1,4 +1,4 @@
-// ARQUIVO: app/player.js
+
 
 import { useLocalSearchParams } from "expo-router";
 import { useState } from "react";
@@ -31,7 +31,7 @@ export default function Player() {
     );
   }
 
-  // --- SOLUÇÃO PARA A WEB ---
+  
   if (Platform.OS === "web") {
     return (
       <View style={styles.container}>
@@ -47,13 +47,13 @@ export default function Player() {
           webkitallowfullscreen="true"
           mozallowfullscreen="true"
           allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
-          // sandbox="allow-scripts allow-same-origin allow-presentation"
+          
         />
       </View>
     );
   }
 
-  // --- COMPORTAMENTO PARA ANDROID E IOS ---
+  
   return (
     <View style={styles.container}>
       {loading && (
@@ -72,28 +72,28 @@ export default function Player() {
         javaScriptEnabled={true}
         domStorageEnabled={true}
         mediaPlaybackRequiresUserAction={false}
-        // Removemos o setSupportMultipleWindows daqui para evitar o "engasgo" da tela branca.
+        
 
-        // --- A TÉCNICA DA ILUSÃO (Roda ANTES do site carregar) ---
+        
         injectedJavaScriptBeforeContentLoaded={`
-          // Mente para o site dizendo que o pop-up abriu perfeitamente.
-          // Assim ele não ativa o Anti-AdBlock e não apaga o seu vídeo!
+          
+          
           window.open = function() { 
             return { closed: false }; 
           };
           
-          // Impede redirecionamentos forçados da página
+          
           window.location.replace = function() {};
           true;
         `}
-        // (Roda DEPOIS do site carregar)
+        
         injectedJavaScript={`
           document.body.style.backgroundColor = '${THEME.void}'; 
           true;
         `}
-        // Nosso porteiro de rede (apenas como garantia final)
+        
         onShouldStartLoadWithRequest={(request) => {
-          // Se a URL for diferente da do filme e tentar mudar a tela inteira
+          
           if (
             request.isTopFrame &&
             request.url !== url &&

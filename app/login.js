@@ -11,7 +11,7 @@ import {
   View,
 } from "react-native";
 
-// IMPORTAÇÕES DO FIREBASE:
+
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -24,7 +24,7 @@ const THEME = {
   starlight: "#ffffff",
   darkMatter: "#1a1a2e",
   comet: "#4cc9f0",
-  error: "#ff4d4d", // Cor vermelha para os avisos
+  error: "#ff4d4d", 
 };
 
 export default function Login() {
@@ -33,11 +33,11 @@ export default function Login() {
   const [isLoading, setIsLoading] = useState(false);
   const [isRegistering, setIsRegistering] = useState(false);
 
-  // NOVO: Estado para guardar e exibir a mensagem de erro na tela
+  
   const [errorMsg, setErrorMsg] = useState("");
 
   const handleAuth = async () => {
-    // Limpa qualquer erro anterior ao tentar de novo
+    
     setErrorMsg("");
 
     if (!email || !password) {
@@ -56,7 +56,7 @@ export default function Login() {
     } catch (error) {
       setIsLoading(false);
 
-      // Mapeamento dos erros do Firebase para avisos amigáveis
+      
       let message = "Ocorreu um erro inesperado. Tente novamente.";
 
       if (error.code === "auth/email-already-in-use")
@@ -66,7 +66,7 @@ export default function Login() {
       if (error.code === "auth/invalid-email")
         message = "Digite um e-mail válido (ex: seu@email.com).";
 
-      // O Firebase junta e-mail e senha errada no mesmo erro por segurança
+      
       if (
         error.code === "auth/invalid-credential" ||
         error.code === "auth/user-not-found" ||
@@ -75,7 +75,7 @@ export default function Login() {
         message = "E-mail ou senha incorretos.";
       }
 
-      // Exibe a mensagem de erro na tela
+      
       setErrorMsg(message);
       console.log("Erro do Firebase:", error.code);
     }
@@ -120,7 +120,7 @@ export default function Login() {
           />
         </View>
 
-        {/* NOVO: Exibição do Erro em texto vermelho acima do botão */}
+        {}
         {errorMsg !== "" && <Text style={styles.errorText}>{errorMsg}</Text>}
 
         <TouchableOpacity
@@ -150,7 +150,7 @@ export default function Login() {
           <TouchableOpacity
             onPress={() => {
               setIsRegistering(!isRegistering);
-              setErrorMsg(""); // Limpa os erros se a pessoa mudar de tela
+              setErrorMsg(""); 
             }}
           >
             <Text style={styles.registerHighlight}>
@@ -180,7 +180,7 @@ const styles = StyleSheet.create({
   },
   logoHighlight: { color: THEME.comet },
   subtitle: { color: "#888", fontSize: 16, marginTop: 5 },
-  inputContainer: { marginBottom: 15 }, // Diminuí a margem para caber o erro melhor
+  inputContainer: { marginBottom: 15 }, 
   input: {
     backgroundColor: THEME.darkMatter,
     color: THEME.starlight,
@@ -193,7 +193,7 @@ const styles = StyleSheet.create({
     borderColor: "#333",
   },
 
-  // NOVO: Estilo da mensagem de erro
+  
   errorText: {
     color: THEME.error,
     marginBottom: 15,

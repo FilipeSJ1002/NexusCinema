@@ -49,16 +49,16 @@ export default function RootLayout() {
   const [isInitializing, setIsInitializing] = useState(true);
 
   useEffect(() => {
-    // O Firebase avisa automaticamente se o usuário está logado ou não
+    
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      setIsInitializing(false); // Terminou de checar
+      setIsInitializing(false); 
     });
 
-    return unsubscribe; // Limpeza do listener
+    return unsubscribe; 
   }, []);
 
-  // Enquanto o Firebase decide se tem alguém logado, a gente segura a tela
+  
   if (isInitializing) return null;
 
   return <RootLayoutNav user={user} />;

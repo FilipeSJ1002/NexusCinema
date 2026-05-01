@@ -1,7 +1,7 @@
-const TMDB_KEY = "fa7dd44e5c0efa299f5d55bebfdfc516";
+const TMDB_KEY = process.env.EXPO_PUBLIC_TMDB_API_KEY;
 const TMDB_BASE_URL = "https://api.themoviedb.org/3";
 
-// Busca filmes ou séries pelo nome
+
 export const searchMedia = async (query, type = "movie", page = 1) => {
   try {
     const response = await fetch(
@@ -15,7 +15,7 @@ export const searchMedia = async (query, type = "movie", page = 1) => {
   }
 };
 
-// Busca os detalhes completos, incluindo temporadas se for série
+
 export const getDetails = async (id, type = "movie") => {
   try {
     const response = await fetch(
@@ -28,7 +28,7 @@ export const getDetails = async (id, type = "movie") => {
   }
 };
 
-// Busca os mais populares (para preencher a tela inicial)
+
 export const getPopular = async (type = "movie") => {
   try {
     const response = await fetch(
@@ -68,7 +68,7 @@ export const getUpcoming = async () => {
   }
 };
 
-// Busca os episódios de uma temporada específica de uma série
+
 export const getSeasonEpisodes = async (tvId, seasonNumber) => {
   try {
     const response = await fetch(

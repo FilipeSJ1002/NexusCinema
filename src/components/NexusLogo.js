@@ -9,13 +9,13 @@ const THEME = {
 export default function NexusLogo() {
   return (
     <View style={styles.container}>
-      {/* O ícone "NC" circular */}
+      {}
       <View style={styles.iconContainer}>
         <Text style={styles.nLetter}>N</Text>
         <Text style={styles.cLetter}>C</Text>
       </View>
 
-      {/* O nome por extenso ao lado */}
+      {}
       <Text style={styles.brandText}>
         NEXUS<Text style={styles.brandHighlight}>CINEMA</Text>
       </Text>
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     marginRight: 10,
-    backgroundColor: "rgba(123, 44, 191, 0.2)", // Fundo roxo levemente transparente
+    backgroundColor: "rgba(123, 44, 191, 0.2)", 
     position: "relative",
   },
   nLetter: {
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     top: 6,
   },
   cLetter: {
-    color: THEME.comet, // O "C" fica em ciano simulando outra dimensão
+    color: THEME.comet, 
     fontWeight: "900",
     fontSize: 18,
     position: "absolute",

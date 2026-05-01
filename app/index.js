@@ -1,4 +1,4 @@
-// import { Head } from "expo-router"; // Componente para alterar o título da aba
+
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { useEffect, useRef, useState } from "react";
 import {
@@ -18,7 +18,7 @@ import {
   getUpcoming,
   searchMedia,
 } from "../src/api/tmdb";
-import HeroCarousel from "../src/components/HeroCarousel"; // Nosso novo componente!
+import HeroCarousel from "../src/components/HeroCarousel"; 
 import MovieRow from "../src/components/MovieRow";
 import NexusLogo from "../src/components/NexusLogo";
 
@@ -82,7 +82,7 @@ export default function Home() {
     if (typingTimer.current) clearTimeout(typingTimer.current);
 
     if (text.length >= 2) {
-      // AUMENTADO PARA 1.2 SEGUNDOS (1200ms) DE ESPERA
+      
       typingTimer.current = setTimeout(() => {
         executeSearch(text);
       }, 1200);
@@ -125,15 +125,13 @@ export default function Home() {
       </View>
     );
 
-  // Separamos os 5 filmes mais populares para rodar no Carrossel Hero
+  
   const heroMovies = popular.slice(0, 5);
 
   return (
     <View style={styles.container}>
-      {/* Altera o nome na aba do navegador */}
-      {/* <Head>
-        <title>NexusCinema - Dimensão de Filmes</title>
-      </Head> */}
+      {}
+      {}
 
       <StatusBar barStyle="light-content" backgroundColor={THEME.void} />
 
@@ -179,7 +177,7 @@ export default function Home() {
           </View>
         ) : (
           <>
-            {/* NOVO CARROSSEL COMPONENTIZADO */}
+            {}
             <HeroCarousel data={heroMovies} />
 
             <MovieRow title="Explorando a Galáxia (Em Alta)" data={popular} />

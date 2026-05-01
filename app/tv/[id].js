@@ -28,24 +28,24 @@ export default function TvDetails() {
   const [show, setShow] = useState(null);
   const [loadingShow, setLoadingShow] = useState(true);
 
-  // Controle de Temporadas e Episódios
+  
   const [seasons, setSeasons] = useState([]);
   const [selectedSeason, setSelectedSeason] = useState(1);
   const [episodes, setEpisodes] = useState([]);
   const [loadingEpisodes, setLoadingEpisodes] = useState(false);
 
-  // Busca os detalhes gerais da série
+  
   useEffect(() => {
     const fetchShow = async () => {
       const data = await getDetails(id, "tv");
       if (data) {
         setShow(data);
-        // Filtra a "Temporada 0" (Especiais) e guarda as temporadas reais
+        
         const validSeasons =
           data.seasons?.filter((s) => s.season_number > 0) || [];
         setSeasons(validSeasons);
 
-        // Define a temporada inicial selecionada (geralmente a 1)
+        
         if (validSeasons.length > 0) {
           setSelectedSeason(validSeasons[0].season_number);
         }
@@ -55,7 +55,7 @@ export default function TvDetails() {
     fetchShow();
   }, [id]);
 
-  // Busca os episódios sempre que a temporada selecionada mudar
+  
   useEffect(() => {
     const fetchEpisodes = async () => {
       if (selectedSeason > 0) {
@@ -88,7 +88,7 @@ export default function TvDetails() {
 
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
-      {/* Imagem de Fundo */}
+      {}
       <ImageBackground
         source={{
           uri: `https://image.tmdb.org/t/p/w1280${show.backdrop_path}`,
@@ -120,7 +120,7 @@ export default function TvDetails() {
           {show.overview || "Nenhuma sinopse disponível."}
         </Text>
 
-        {/* SELETOR DE TEMPORADAS (Rolagem Horizontal) */}
+        {}
         <Text style={styles.sectionTitle}>Temporadas</Text>
         <ScrollView
           horizontal
@@ -150,7 +150,7 @@ export default function TvDetails() {
           ))}
         </ScrollView>
 
-        {/* LISTA DE EPISÓDIOS */}
+        {}
         {loadingEpisodes ? (
           <ActivityIndicator
             size="large"
@@ -180,7 +180,7 @@ export default function TvDetails() {
                       </Text>
                     </View>
                   )}
-                  {/* Ícone de Play por cima da miniatura */}
+                  {}
                   <View style={styles.playIconContainer}>
                     <Text style={{ color: THEME.starlight, fontSize: 12 }}>
                       ▶
@@ -239,7 +239,7 @@ const styles = StyleSheet.create({
   },
   overview: { color: "#ccc", fontSize: 15, lineHeight: 24, marginBottom: 20 },
 
-  // Seletor de Temporadas
+  
   seasonSelector: { marginBottom: 20, maxHeight: 40 },
   seasonBadge: {
     paddingHorizontal: 15,
@@ -257,7 +257,7 @@ const styles = StyleSheet.create({
   seasonText: { color: "#aaa", fontWeight: "bold" },
   seasonTextActive: { color: THEME.starlight },
 
-  // Cards de Episódios
+  
   episodesContainer: { marginTop: 10 },
   episodeCard: {
     flexDirection: "row",
@@ -268,7 +268,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   episodeImageContainer: { position: "relative" },
-  episodeImage: { width: 120, height: 68 }, // Proporção 16:9
+  episodeImage: { width: 120, height: 68 }, 
   episodeImagePlaceholder: {
     width: 120,
     height: 68,

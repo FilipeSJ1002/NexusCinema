@@ -20,7 +20,7 @@ const THEME = {
 };
 
 export default function MovieDetails() {
-  const { id } = useLocalSearchParams(); // Pega o ID da URL
+  const { id } = useLocalSearchParams(); 
   const router = useRouter();
   const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -36,7 +36,7 @@ export default function MovieDetails() {
 
   const handlePlay = () => {
     const url = getMoviePlayerUrl(id);
-    // Envia a URL gerada para a nossa tela de Player
+    
     router.push({ pathname: "/player", params: { url } });
   };
 
@@ -55,7 +55,7 @@ export default function MovieDetails() {
 
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
-      {/* Imagem de Fundo (Backdrop) */}
+      {}
       <ImageBackground
         source={{
           uri: `https://image.tmdb.org/t/p/w1280${movie.backdrop_path}`,
@@ -66,7 +66,7 @@ export default function MovieDetails() {
       </ImageBackground>
 
       <View style={styles.content}>
-        {/* Título e Botão de Play */}
+        {}
         <Text style={styles.title}>{movie.title}</Text>
 
         <View style={styles.metaData}>
@@ -85,7 +85,7 @@ export default function MovieDetails() {
           <Text style={styles.playButtonText}>▶ Assistir Filme</Text>
         </TouchableOpacity>
 
-        {/* Gêneros */}
+        {}
         <View style={styles.genresContainer}>
           {movie.genres?.map((genre) => (
             <View key={genre.id} style={styles.genreBadge}>
@@ -94,7 +94,7 @@ export default function MovieDetails() {
           ))}
         </View>
 
-        {/* Sinopse */}
+        {}
         <Text style={styles.sectionTitle}>Sinopse</Text>
         <Text style={styles.overview}>
           {movie.overview || "Nenhuma sinopse disponível."}
@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
     ...StyleSheet.absoluteFillObject,
     backgroundColor: "rgba(7, 7, 20, 0.6)",
   },
-  content: { padding: 20, marginTop: -30 }, // Sobe um pouco o conteúdo para sobrepor a imagem
+  content: { padding: 20, marginTop: -30 }, 
   title: {
     fontSize: 28,
     fontWeight: "bold",

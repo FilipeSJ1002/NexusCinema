@@ -30,10 +30,10 @@ export default function MovieRow({
   const { width } = useWindowDimensions();
   const [scrollX, setScrollX] = useState(0);
 
-  // Novo estado para guardar a largura total de todos os filmes somados
+  
   const [contentWidth, setContentWidth] = useState(0);
 
-  // Setas só aparecem no PC, fora da busca, e se houver filmes na lista
+  
   const isDesktop = Platform.OS === "web" && width > 768;
   const showArrows = isDesktop && !isSearch && data && data.length > 0;
 
@@ -43,16 +43,16 @@ export default function MovieRow({
     setScrollX(event.nativeEvent.contentOffset.x);
   };
 
-  // --- LÓGICA DO CARROSSEL INFINITO ---
+  
   const scrollLeft = () => {
     if (scrollX <= 0) {
-      // Se está no começo (0) e clica para a esquerda, vai lá pro final da lista
+      
       flatListRef.current?.scrollToOffset({
         offset: contentWidth - width,
         animated: true,
       });
     } else {
-      // Se está no meio, rola normalmente para a esquerda
+      
       flatListRef.current?.scrollToOffset({
         offset: Math.max(scrollX - scrollAmount, 0),
         animated: true,
@@ -61,15 +61,15 @@ export default function MovieRow({
   };
 
   const scrollRight = () => {
-    // Se a posição atual + a largura da tela for maior que o tamanho total (com uma margem de segurança de 20px)
+    
     if (scrollX + width >= contentWidth - 20) {
-      // Chegou no fim! Volta suavemente para o começo (posição 0)
+      
       flatListRef.current?.scrollToOffset({
         offset: 0,
         animated: true,
       });
     } else {
-      // Se não chegou no fim, rola normalmente para a direita
+      
       flatListRef.current?.scrollToOffset({
         offset: scrollX + scrollAmount,
         animated: true,
@@ -113,7 +113,7 @@ export default function MovieRow({
       <Text style={styles.title}>{title}</Text>
 
       <View style={styles.rowWrapper}>
-        {/* Seta Esquerda agora sempre aparece no PC */}
+        {}
         {showArrows && (
           <TouchableOpacity
             style={[styles.arrowBtn, styles.arrowLeft]}
@@ -134,7 +134,7 @@ export default function MovieRow({
           contentContainerStyle={styles.listContent}
           onScroll={handleScroll}
           scrollEventThrottle={16}
-          // É AQUI que capturamos o tamanho total da lista quando ela é desenhada
+          
           onContentSizeChange={(w) => setContentWidth(w)}
         />
 

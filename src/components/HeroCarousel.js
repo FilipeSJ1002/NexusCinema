@@ -24,10 +24,10 @@ export default function HeroCarousel({ data }) {
   const flatListRef = useRef(null);
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Exibe as setas apenas se estiver na Web e a tela for grande
+  
   const isDesktop = Platform.OS === "web" && width > 768;
 
-  // Função central para mover o carrossel (conserta o erro de sincronia)
+  
   const goToIndex = (index) => {
     flatListRef.current?.scrollToIndex({
       index: index,
@@ -36,7 +36,7 @@ export default function HeroCarousel({ data }) {
     setCurrentIndex(index);
   };
 
-  // Efeito do Auto-Scroll (A cada 5 segundos)
+  
   useEffect(() => {
     if (!data || data.length === 0) return;
 
@@ -51,23 +51,23 @@ export default function HeroCarousel({ data }) {
     return () => clearInterval(interval);
   }, [currentIndex, data]);
 
-  // Atualiza a bolinha se o usuário arrastar com o dedo/mouse
+  
   const handleScrollEnd = (event) => {
     const contentOffsetX = event.nativeEvent.contentOffset.x;
     const index = Math.round(contentOffsetX / width);
     setCurrentIndex(index);
   };
 
-  // Funções das Setas da Web
+  
   const scrollLeft = () => {
     let nextIndex = currentIndex - 1;
-    if (nextIndex < 0) nextIndex = data.length - 1; // Se está no primeiro, vai pro último
+    if (nextIndex < 0) nextIndex = data.length - 1; 
     goToIndex(nextIndex);
   };
 
   const scrollRight = () => {
     let nextIndex = currentIndex + 1;
-    if (nextIndex >= data.length) nextIndex = 0; // Se está no último, volta pro primeiro
+    if (nextIndex >= data.length) nextIndex = 0; 
     goToIndex(nextIndex);
   };
 
@@ -100,7 +100,7 @@ export default function HeroCarousel({ data }) {
 
   return (
     <View style={styles.container}>
-      {/* Seta Esquerda (Aparece sobre a imagem na web) */}
+      {}
       {isDesktop && (
         <TouchableOpacity
           style={[styles.arrowBtn, styles.arrowLeft]}
@@ -119,7 +119,7 @@ export default function HeroCarousel({ data }) {
         showsHorizontalScrollIndicator={false}
         renderItem={renderItem}
         onMomentumScrollEnd={handleScrollEnd}
-        // ESSA É A LINHA MÁGICA QUE CONSERTA O BUG DE NÃO ROLAR SOZINHO:
+        
         getItemLayout={(data, index) => ({
           length: width,
           offset: width * index,
@@ -127,7 +127,7 @@ export default function HeroCarousel({ data }) {
         })}
       />
 
-      {/* Seta Direita (Aparece sobre a imagem na web) */}
+      {}
       {isDesktop && (
         <TouchableOpacity
           style={[styles.arrowBtn, styles.arrowRight]}
@@ -137,7 +137,7 @@ export default function HeroCarousel({ data }) {
         </TouchableOpacity>
       )}
 
-      {/* Bolinhas indicadoras do carrossel (agora clicáveis!) */}
+      {}
       <View style={styles.dotsContainer}>
         {data.map((_, index) => (
           <TouchableOpacity
@@ -160,7 +160,7 @@ const styles = StyleSheet.create({
     width: "100%",
     height: 450,
     marginBottom: 30,
-    position: "relative", // Importante para as setas flutuarem em relação a este container
+    position: "relative", 
   },
   heroImage: {
     width: "100%",
@@ -194,18 +194,18 @@ const styles = StyleSheet.create({
   },
   heroButtonText: { color: THEME.void, fontWeight: "bold", fontSize: 16 },
 
-  // Estilos das Setas do Carrossel Hero
+  
   arrowBtn: {
     position: "absolute",
     top: "50%",
-    marginTop: -25, // Para centralizar perfeitamente (metade da altura)
+    marginTop: -25, 
     width: 50,
     height: 50,
     borderRadius: 25,
-    backgroundColor: "rgba(0, 0, 0, 0.6)", // Fundo redondo semi-transparente
+    backgroundColor: "rgba(0, 0, 0, 0.6)", 
     justifyContent: "center",
     alignItems: "center",
-    zIndex: 10, // Garante que a seta fique por cima da imagem
+    zIndex: 10, 
   },
   arrowLeft: { left: 20 },
   arrowRight: { right: 20 },
@@ -217,7 +217,7 @@ const styles = StyleSheet.create({
     marginTop: -2,
   },
 
-  // Estilos das Bolinhas
+  
   dotsContainer: {
     flexDirection: "row",
     justifyContent: "center",
@@ -227,7 +227,7 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   dotTouchArea: {
-    padding: 10, // Aumenta a área de clique para o dedo/mouse
+    padding: 10, 
   },
   dot: {
     width: 8,
@@ -237,6 +237,6 @@ const styles = StyleSheet.create({
   },
   activeDot: {
     backgroundColor: THEME.nebula,
-    width: 24, // Fica mais esticadinho indicando que é a atual
+    width: 24, 
   },
 });
