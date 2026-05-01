@@ -1,0 +1,54 @@
+{
+  "expo": {
+    "name": "NexusCinema",
+    "slug": "NexusCinema",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/logo.png",
+    "scheme": "nexuscinema",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#070714",
+        "foregroundImage": "./assets/images/logo.png"
+      },
+      "edgeToEdgeEnabled": true,
+      "predictiveBackGestureEnabled": false,
+      "package": "com.filipe_sj.NexusCinema"
+    },
+    "web": {
+      "name": "NexusCinema - Dimensão de Filmes",
+      "shortName": "NexusCinema",
+      "favicon": "./assets/images/logo.png"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/images/logo.png",
+          "imageWidth": 200,
+          "resizeMode": "contain",
+          "backgroundColor": "#070714",
+          "dark": {
+            "backgroundColor": "#070714"
+          }
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true,
+      "reactCompiler": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "4f16ef41-5186-451b-b987-2392761f2f33"
+      }
+    }
+  }
+}
